@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>USDS – Flotila</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-theme="dark">
+
+<header>
+  <img src="assets/logo.png" alt="USDS Logo">
+  <h1>Flotila USDS</h1>
+</header>
+
+<nav>
+  <span id="themeToggle" style="cursor:pointer; float:right; margin-right:20px;">🌙 Tmavý režim</span>
+  <a href="index.html">O nás</a>
+  <a href="discord.html">Discord</a>
+  <a href="join.html">Přidat se</a>
+  <a href="flotila.html">Flotila</a>
+  <a href="garaze.html">Garáže</a>
+  <a href="statistiky.html">Statistiky</a>
+  <a href="ridici.html">Řidiči</a>
+</nav>
+
+<main>
+  <section class="section">
+    <h2>Naše flotila</h2>
+    <p>USDS využívá moderní tahače a návěsy, které odpovídají našemu stylu a standardům.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>ETS2 tahače</h3>
+        <ul>
+          <li>Scania S Highline</li>
+          <li>Volvo FH</li>
+          <li>DAF XG+</li>
+          <li>Mercedes-Benz Actros</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>ATS tahače</h3>
+        <ul>
+          <li>Kenworth W900</li>
+          <li>Peterbilt 389</li>
+          <li>Freightliner Cascadia</li>
+          <li>Western Star 57X</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Návěsy</h3>
+        <ul>
+          <li>Chlazené návěsy</li>
+          <li>Plachtové návěsy</li>
+          <li>Lowbed / heavy cargo</li>
+          <li>Box trailers</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> United States Delivery Service – USDS
+</footer>
+
+<script src="js/theme.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
