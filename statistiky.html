@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>USDS – Statistiky</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-theme="dark">
+
+<header>
+  <img src="assets/logo.png" alt="USDS Logo">
+  <h1>Statistiky USDS</h1>
+</header>
+
+<nav>
+  <span id="themeToggle" style="cursor:pointer; float:right; margin-right:20px;">🌙 Tmavý režim</span>
+  <a href="index.html">O nás</a>
+  <a href="discord.html">Discord</a>
+  <a href="join.html">Přidat se</a>
+  <a href="flotila.html">Flotila</a>
+  <a href="garaze.html">Garáže</a>
+  <a href="statistiky.html">Statistiky</a>
+  <a href="ridici.html">Řidiči</a>
+</nav>
+
+<main>
+  <section class="section">
+    <h2>Souhrn</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Počet řidičů</h3>
+        <p><strong id="drivers">–</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Počet jízd</h3>
+        <p><strong id="jobs">–</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Najeté kilometry</h3>
+        <p><strong id="km">–</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Aktivita</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Jízdy za posledních 7 dní</h3>
+        <p><strong id="jobs7">–</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Průměrná délka jízdy</h3>
+        <p><strong id="avg">–</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Konvoje tento měsíc</h3>
+        <p><strong id="convoys">–</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <p style="color:var(--text-muted); font-style:italic;">
+    Tato stránka je připravena na budoucí napojení na Trucky API.
+  </p>
+</main>
+
+<footer>
+  © <span id="year"></span> United States Delivery Service – USDS
+</footer>
+
+<script src="js/theme.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
