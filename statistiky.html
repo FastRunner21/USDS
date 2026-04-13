@@ -79,5 +79,39 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
+<script>
+const API_KEY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjo0NDY3N30.R82fdWUv8rF9ln3PFCn4BmNPmrCM5KMIV4rRb26DcDQ";
+const VTC_ID = 44677;
+
+async function loadStats() {
+  try {
+    const res = await fetch(`https://api.truckyapp.com/v2/vtc/${VTC_ID}/stats`, {
+      headers: {
+        "x-api-key": API_KEY
+      }
+    });
+
+    const data = await res.json();
+
+    if (!data || !data.response) {
+      console.error("API nevrátilo data:", data);
+      return;
+    }
+
+    document.getElementById("drivers").textContent = data.response.members ?? "–";
+    document.getElementById("jobs").textContent = data.response.jobs ?? "–";
+    document.getElementById("km").textContent = data.response.distance ?? "–";
+    document.getElementById("jobs7").textContent = data.response.jobs7d ?? "–";
+    document.getElementById("avg").textContent = data.response.avgDistance ?? "–";
+    document.getElementById("convoys").textContent = data.response.convoys ?? "–";
+
+  } catch (err) {
+    console.error("Chyba při načítání API:", err);
+  }
+}
+
+loadStats();
+</script>
+
 </body>
 </html>
