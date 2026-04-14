@@ -88,3 +88,86 @@ footer {
   border-top: 2px solid var(--accent);
   color: var(--text-muted);
 }
+
+/* Navigace – základní úpravy */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.3rem 0.6rem;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Aktivní odkaz – můžeš doplnit ručně class="active" */
+nav a.active {
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Tlačítko hamburgeru */
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Wrapper na odkazy */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Přepínač tématu */
+.theme-toggle {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* Mobilní verze */
+@media (max-width: 768px) {
+  nav {
+    align-items: flex-start;
+  }
+
+  .theme-toggle {
+    order: 2;
+    margin-left: 0;
+  }
+
+  .nav-toggle {
+    display: inline-block;
+    order: 1;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 0.4rem 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-links.hidden {
+    display: none;
+  }
+}
+
