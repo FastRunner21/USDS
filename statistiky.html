@@ -3,46 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <title>USDS – Statistiky</title>
+
+  <!-- Styl -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Chart.js pro grafy -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body data-theme="dark">
 
-<header>
-  <img src="LOGO_USDS.png" alt="USDS Logo">
-  <h1>Statistiky USDS</h1>
+<header class="header">
+  <img src="LOGO_USDS.png" alt="USDS Logo" class="logo">
+  <div class="header-text">
+    <h1>USDS – Statistiky</h1>
+    <p>Neon dashboard živých statistik VTC</p>
+  </div>
 </header>
 
-<nav>
-  <span id="themeToggle" style="cursor:pointer; float:right; margin-right:20px;">🌙 Tmavý režim</span>
-  <a href="index.html">O nás</a>
-  <a href="discord.html">Discord</a>
-  <a href="join.html">Přidat se</a>
-  <a href="flotila.html">Flotila</a>
-  <a href="garaze.html">Garáže</a>
-  <a href="statistiky.html">Statistiky</a>
-  <a href="ridici.html">Řidiči</a>
+<nav class="nav">
+  <span id="themeToggle" class="theme-toggle">🌙 Tmavý režim</span>
+
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    ☰
+  </button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">O nás</a>
+    <a href="discord.html">Discord</a>
+    <a href="join.html">Přidat se</a>
+    <a href="flotila.html">Flotila</a>
+    <a href="garaze.html">Garáže</a>
+    <a href="statistiky.html" class="active">Statistiky</a>
+    <a href="ridici.html">Řidiči</a>
+    <a href="mapa.html">Mapa TruckersMP</a>
+  </div>
 </nav>
 
-<main>
+<main class="dashboard">
 
-  <!-- Souhrn -->
+  <!-- Horní řada: souhrn -->
   <section class="section">
     <h2>Souhrn</h2>
-    <div class="grid">
-      <div class="card">
+    <div class="grid grid-3">
+      <div class="card card-glow">
         <h3>Počet řidičů</h3>
-        <p><strong id="drivers">–</strong></p>
+        <p class="stat-value" id="drivers">–</p>
+        <p class="stat-label">Aktuální počet členů VTC</p>
       </div>
 
-      <div class="card">
+      <div class="card card-glow">
         <h3>Počet jízd</h3>
-        <p><strong id="jobs">–</strong></p>
+        <p class="stat-value" id="jobs">–</p>
+        <p class="stat-label">Celkový počet dokončených jízd</p>
       </div>
 
-      <div class="card">
+      <div class="card card-glow">
         <h3>Najeté kilometry</h3>
-        <p><strong id="km">–</strong></p>
+        <p class="stat-value" id="km">–</p>
+        <p class="stat-label">Celková vzdálenost všech jízd</p>
       </div>
     </div>
   </section>
@@ -50,145 +69,64 @@
   <!-- Aktivita -->
   <section class="section">
     <h2>Aktivita</h2>
-    <div class="grid">
-      <div class="card">
+    <div class="grid grid-3">
+      <div class="card card-glow">
         <h3>Jízdy za posledních 7 dní</h3>
-        <p><strong id="jobs7">–</strong></p>
+        <p class="stat-value" id="jobs7">–</p>
+        <p class="stat-label">Krátkodobá aktivita VTC</p>
       </div>
 
-      <div class="card">
+      <div class="card card-glow">
         <h3>Průměrná délka jízdy</h3>
-        <p><strong id="avg">–</strong></p>
+        <p class="stat-value" id="avg">–</p>
+        <p class="stat-label">Průměrná vzdálenost jedné jízdy</p>
       </div>
 
-      <div class="card">
+      <div class="card card-glow">
         <h3>Konvoje tento měsíc</h3>
-        <p><strong id="convoys">–</strong></p>
+        <p class="stat-value" id="convoys">–</p>
+        <p class="stat-label">Organizované společné jízdy</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Grafy -->
+  <section class="section">
+    <h2>Grafy</h2>
+    <div class="card card-glow">
+      <div class="graph-controls">
+        <button class="btn-graph" data-graph="jobs">Jízdy</button>
+        <button class="btn-graph" data-graph="km">Kilometry</button>
+        <button class="btn-graph" data-graph="activity">Aktivní řidiči</button>
+      </div>
+      <canvas id="mainChart"></canvas>
     </div>
   </section>
 
   <!-- TOP řidiči -->
   <section class="section">
     <h2>TOP řidiči</h2>
-    <div class="card">
-      <p><strong id="topDrivers">–</strong></p>
+    <div class="card card-glow">
+      <div id="topDrivers" class="top-drivers">
+        –
+      </div>
     </div>
   </section>
 
-  <p style="color:var(--text-muted); font-style:italic;">
-    Statistiky jsou načítány živě z Trucky API.
+  <p class="note">
+    Statistiky jsou načítány živě z Trucky API. Stránka se automaticky aktualizuje každou minutu.
   </p>
 
 </main>
 
-<footer>
+<footer class="footer">
   © <span id="year"></span> United States Delivery Service – USDS
 </footer>
 
-<script src="js/theme.js"></script>
+<!-- Hlavní skript -->
+<script src="js/script.js"></script>
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-<!-- 🔥 TRUCKY API – KOMPLETNÍ IMPLEMENTACE -->
-<script>
-const API_KEY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjo0NDY3N30.R82fdWUv8rF9ln3PFCn4BmNPmrCM5KMIV4rRb26DcDQ";   // ← SEM VLOŽ SVŮJ NOVÝ API KEY
-const VTC_ID = 44677;
-
-// Loading state
-function setLoading() {
-  ["drivers","jobs","km","jobs7","avg","convoys","topDrivers"]
-    .forEach(id => document.getElementById(id).textContent = "…");
-}
-
-// Error state
-function setError() {
-  ["drivers","jobs","km","jobs7","avg","convoys","topDrivers"]
-    .forEach(id => document.getElementById(id).textContent = "Nedostupné");
-}
-
-// Základní statistiky
-async function loadStats() {
-  try {
-    const res = await fetch(`https://api.truckyapp.com/v2/vtc/${VTC_ID}/stats`, {
-      headers: { "x-api-key": API_KEY }
-    });
-
-    const data = await res.json();
-    if (!data || !data.response) return setError();
-
-    const r = data.response;
-
-    document.getElementById("drivers").textContent = r.members ?? "–";
-    document.getElementById("jobs").textContent = r.jobs ?? "–";
-    document.getElementById("km").textContent = r.distance ?? "–";
-    document.getElementById("jobs7").textContent = r.jobs7d ?? "–";
-    document.getElementById("avg").textContent = r.avgDistance ?? "–";
-    document.getElementById("convoys").textContent = r.convoys ?? "–";
-
-  } catch (err) {
-    console.error("Chyba API:", err);
-    setError();
-  }
-}
-
-// Leaderboard řidičů
-async function loadLeaderboard() {
-  try {
-    const res = await fetch(`https://api.truckyapp.com/v2/vtc/${VTC_ID}/leaderboard`, {
-      headers: { "x-api-key": API_KEY }
-    });
-
-    const data = await res.json();
-    if (!data || !data.response) {
-      document.getElementById("topDrivers").textContent = "Nedostupné";
-      return;
-    }
-
-    const list = data.response.slice(0, 5);
-    let html = "";
-
-    list.forEach((d, i) => {
-      html += `${i + 1}. ${d.driverName} – ${d.distance} km<br>`;
-    });
-
-    document.getElementById("topDrivers").innerHTML = html;
-
-  } catch (err) {
-    console.error("Chyba leaderboardu:", err);
-    document.getElementById("topDrivers").textContent = "Nedostupné";
-  }
-}
-
-// Měsíční statistiky (připraveno pro grafy)
-async function loadMonthly() {
-  try {
-    const res = await fetch(`https://api.truckyapp.com/v2/vtc/${VTC_ID}/stats/monthly`, {
-      headers: { "x-api-key": API_KEY }
-    });
-
-    const data = await res.json();
-    if (!data || !data.response) return;
-
-    console.log("Měsíční statistiky:", data.response);
-
-  } catch (err) {
-    console.error("Chyba měsíčních statistik:", err);
-  }
-}
-
-// Spuštění
-setLoading();
-loadStats();
-loadLeaderboard();
-loadMonthly();
-
-// Automatická aktualizace každých 60 sekund
-setInterval(() => {
-  loadStats();
-  loadLeaderboard();
-}, 60000);
 </script>
 
 </body>
