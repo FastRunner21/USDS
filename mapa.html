@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>USDS – TruckersMP Live Mapa</title>
+
+  <!-- Styl -->
+  <link rel="stylesheet" href="css/style2.css">
+</head>
+
+<body data-theme="dark">
+
+<header class="header">
+  <img src="LOGO_USDS.png" alt="USDS Logo" class="logo">
+  <div class="header-text">
+    <h1>TruckersMP – Live Mapa</h1>
+    <p>Aktuální provoz na TruckersMP serverech</p>
+  </div>
+</header>
+
+<nav class="nav">
+  <span id="themeToggle" class="theme-toggle">🌙 Tmavý režim</span>
+
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    ☰
+  </button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">O nás</a>
+    <a href="discord.html">Discord</a>
+    <a href="join.html">Přidat se</a>
+    <a href="flotila.html">Flotila</a>
+    <a href="garaze.html">Garáže</a>
+    <a href="statistiky.html">Statistiky</a>
+    <a href="ridici.html">Řidiči</a>
+    <a href="mapa.html" class="active">Mapa TruckersMP</a>
+  </div>
+</nav>
+
+<main class="dashboard">
+
+  <section class="section">
+    <h2>TruckersMP – Živá mapa</h2>
+
+    <div class="card card-glow">
+      <p class="stat-label">
+        Níže vidíš živou mapu TruckersMP. Můžeš přibližovat, oddalovat a sledovat provoz v reálném čase.
+      </p>
+
+      <div class="tmp-map-wrapper">
+        <iframe
+          src="https://map.truckersmp.com/"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  © <span id="year"></span> United States Delivery Service – USDS
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
