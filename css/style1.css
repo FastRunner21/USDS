@@ -1,0 +1,241 @@
+/* ===========================
+   ZÁKLADNÍ NASTAVENÍ
+=========================== */
+
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #111;
+  --text: #fff;
+  --text-muted: #888;
+  --accent: #ff0000;
+  --accent-light: #ff2222;
+  --accent-glow: rgba(255, 0, 0, 0.6);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 20px;
+  background: #0d0d0d;
+  border-bottom: 2px solid var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.logo {
+  height: 70px;
+}
+
+.header-text h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.header-text p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* ===========================
+   NAVIGACE
+=========================== */
+
+.nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #0d0d0d;
+  border-bottom: 1px solid #222;
+  position: relative;
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-right: 15px;
+  padding: 5px 8px;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.nav a.active {
+  border-bottom: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.theme-toggle {
+  margin-left: auto;
+  cursor: pointer;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Hamburger */
+.nav-toggle {
+  display: none;
+  margin-left: 10px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ===========================
+   DASHBOARD LAYOUT
+=========================== */
+
+.dashboard {
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+  margin-bottom: 15px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* ===========================
+   KARTY
+=========================== */
+
+.card {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #222;
+}
+
+.card-glow {
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent-light);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   GRAFY
+=========================== */
+
+.graph-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-graph {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-graph:hover {
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ===========================
+   TOP ŘIDIČI
+=========================== */
+
+.top-drivers {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-muted);
+  border-top: 1px solid #222;
+  margin-top: 40px;
+}
+
+/* ===========================
+   MOBILNÍ VERZE
+=========================== */
+
+@media (max-width: 768px) {
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .nav-links.hidden {
+    display: none;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    height: 60px;
+  }
+}
