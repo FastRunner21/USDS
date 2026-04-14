@@ -2,7 +2,7 @@
 // ZÁKLADNÍ NASTAVENÍ
 // ===========================
 
-const API_KEY = "";   // ← SEM VLOŽ SVŮJ TRUCKY API KEY
+const API_KEY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjo0NDY3N30.R82fdWUv8rF9ln3PFCn4BmNPmrCM5KMIV4rRb26DcDQ";   // ← SEM VLOŽ SVŮJ TRUCKY API KEY
 const VTC_ID = 44677;
 
 // ===========================
